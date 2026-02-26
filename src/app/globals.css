@@ -1520,6 +1520,26 @@
 
 [dir="rtl"] {
   direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] * {
+  text-align: inherit;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  text-align: right;
 }
 
 [dir="rtl"] [data-sidebar="sidebar"] {
@@ -1543,6 +1563,7 @@
 
 [dir="rtl"] [data-sidebar="menu-button"] {
   flex-direction: row-reverse;
+  text-align: right;
 }
 
 [dir="rtl"] [data-sidebar="menu-button"] > svg:first-child,
@@ -1557,6 +1578,37 @@
   margin-right: 0.5rem;
 }
 
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .items-center {
+  align-items: center;
+}
+
+[dir="rtl"] button {
+  text-align: right;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
 [dir="rtl"] .text-center {
   text-align: center !important;
+}
+
+[dir="rtl"] .justify-between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .gap-2,
+[dir="rtl"] .gap-4 {
+  gap: inherit;
 }
