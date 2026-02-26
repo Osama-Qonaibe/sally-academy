@@ -1,9 +1,9 @@
 {
-  "name": "sally-search-engine",
+  "name": "sally-academy",
   "version": "1.0.0",
   "private": true,
   "author": "Osama Qonaibe",
-  "description": "Sally Academic Search - AI-powered educational search engine",
+  "description": "Sally Academy - AI-powered educational platform",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -43,9 +43,9 @@
     "docker-compose:logs": "docker-compose -f docker/compose.yml logs -f",
     "docker-compose:ps": "docker-compose -f docker/compose.yml ps",
     "docker-compose:update": "git pull && docker-compose -f docker/compose.yml up -d --build",
-    "docker:pg": "docker run --name sally-postgres -e POSTGRES_PASSWORD=your_password -e POSTGRES_USER=your_username -e POSTGRES_DB=your_database_name -p 5432:5432 -d postgres",
-    "docker:redis": "docker run --name sally-redis -p 6379:6379 -d redis:7-alpine",
-    "docker:app": "docker build -f docker/Dockerfile -t sally-search-engine . && docker run -p 3000:3000 -e NO_HTTPS=1 sally-search-engine",
+    "docker:pg": "docker run --name sally-academy-pg -e POSTGRES_PASSWORD=your_password -e POSTGRES_USER=your_username -e POSTGRES_DB=your_database_name -p 5432:5432 -d postgres",
+    "docker:redis": "docker run --name sally-academy-redis -p 6379:6379 -d redis:7-alpine",
+    "docker:app": "docker build -f docker/Dockerfile -t sally-academy . && docker run -p 3000:3000 -e NO_HTTPS=1 sally-academy",
     "prepare": "husky",
     "playwright:install": "playwright install",
     "check": "pnpm lint:fix && pnpm check-types && pnpm test"
