@@ -20,7 +20,6 @@ export function AppSidebar({
   const userRole = user?.role;
   const router = useRouter();
 
-  // Handle new chat shortcut (specific to main app)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isShortcutEvent(e, Shortcuts.openNewChat)) {
@@ -39,7 +38,7 @@ export function AppSidebar({
       className="border-r border-sidebar-border/80"
     >
       <SidebarHeaderShared
-        title="better-chatbot"
+        title="Sally Academy"
         href="/"
         enableShortcuts={true}
         onLinkClick={() => {
