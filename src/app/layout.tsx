@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "better-chatbot",
+  title: "Sally Academy",
   description:
-    "Better Chatbot is a chatbot that uses the Tools to answer questions.",
+    "Sally Academy is an AI-powered research and academic platform designed to help students and researchers.",
 };
 
 export default async function RootLayout({
