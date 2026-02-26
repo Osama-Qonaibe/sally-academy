@@ -24,8 +24,8 @@ export function SWRConfigProvider({
 
   useEffect(() => {
     console.log(
-      "%c█▄▄ █▀▀ ▀█▀ ▀█▀ █▀▀ █▀█\n█▄█ █▄▄  █   █  █▄▄ █▀▄\n\n%c⛓️ Just a Better Chatbot\nhttps://github.com/cgoinglove/better-chatbot",
-      "color: #00d4ff; font-weight: bold; font-family: monospace; font-size: 16px; text-shadow: 0 0 10px #00d4ff;",
+      "%c███████╗ █████╗ ██╗     ██╗  ██╗   ██╗\n██╔════╝██╔══██╗██║     ██║  ╚██╗ ██╔╝\n███████╗███████║██║     ██║   ╚████╔╝ \n╚════██║██╔══██║██║     ██║    ╚██╔╝  \n███████║██║  ██║███████╗███████╗██║   \n╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝   \n\n%c🎓 Sally Academy - AI-Powered Research Platform\nhttps://github.com/Osama-Qonaibe/sally-academy",
+      "color: #6366f1; font-weight: bold; font-family: monospace; font-size: 14px; text-shadow: 0 0 10px #6366f1;",
       "color: #888; font-size: 12px;",
     );
   }, []);
