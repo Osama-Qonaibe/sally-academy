@@ -1518,17 +1518,9 @@
   }
 }
 
-[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-}
-
-[dir="rtl"] * {
-  text-align: inherit;
-}
-
 [dir="rtl"] input,
-[dir="rtl"] textarea {
+[dir="rtl"] textarea,
+[dir="rtl"] [contenteditable] {
   text-align: right;
   direction: rtl;
 }
@@ -1538,77 +1530,9 @@
 [dir="rtl"] h3,
 [dir="rtl"] h4,
 [dir="rtl"] h5,
-[dir="rtl"] h6 {
+[dir="rtl"] h6,
+[dir="rtl"] p,
+[dir="rtl"] label,
+[dir="rtl"] span:not(.icon) {
   text-align: right;
-}
-
-[dir="rtl"] [data-sidebar="sidebar"] {
-  left: auto;
-  right: 0;
-}
-
-[dir="rtl"] [data-sidebar="sidebar"][data-state="collapsed"] {
-  right: calc(var(--sidebar-width-icon) * -1);
-}
-
-[dir="rtl"] [data-sidebar="sidebar"][data-variant="inset"] {
-  left: auto;
-  right: var(--sidebar-width-icon);
-}
-
-[dir="rtl"] .group[data-sidebar="sidebar"][data-collapsible="icon"] .group-data-\[collapsible\=icon\]\:left-auto {
-  left: 0;
-  right: auto;
-}
-
-[dir="rtl"] [data-sidebar="menu-button"] {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
-[dir="rtl"] [data-sidebar="menu-button"] > svg:first-child,
-[dir="rtl"] [data-sidebar="menu-button"] > span:first-child {
-  margin-left: 0.5rem;
-  margin-right: 0;
-}
-
-[dir="rtl"] [data-sidebar="menu-button"] > svg:last-child,
-[dir="rtl"] [data-sidebar="menu-button"] > span:last-child {
-  margin-left: 0;
-  margin-right: 0.5rem;
-}
-
-[dir="rtl"] .flex {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .items-center {
-  align-items: center;
-}
-
-[dir="rtl"] button {
-  text-align: right;
-}
-
-[dir="rtl"] .ml-auto {
-  margin-left: 0;
-  margin-right: auto;
-}
-
-[dir="rtl"] .mr-auto {
-  margin-right: 0;
-  margin-left: auto;
-}
-
-[dir="rtl"] .text-center {
-  text-align: center !important;
-}
-
-[dir="rtl"] .justify-between {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .gap-2,
-[dir="rtl"] .gap-4 {
-  gap: inherit;
 }
