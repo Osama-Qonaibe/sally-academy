@@ -63,6 +63,7 @@ export const SUPPORTED_LOCALES = [
   {
     code: "ar",
     name: "العربية 🇸🇦",
+    rtl: true,
   },
   {
     code: "ko",
