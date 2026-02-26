@@ -26,6 +26,8 @@ import {
   MoonStar,
   ChevronRight,
   Settings,
+  Facebook,
+  Instagram,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { appStore } from "@/app/store";
@@ -36,8 +38,6 @@ import { useTranslations } from "next-intl";
 import useSWR from "swr";
 import { getLocaleAction } from "@/i18n/get-locale";
 import { Suspense, useCallback } from "react";
-import { GithubIcon } from "ui/github-icon";
-import { DiscordIcon } from "ui/discord-icon";
 import { useThemeStyle } from "@/hooks/use-theme-style";
 import { BasicUser } from "app-types/user";
 import { getUserAvatar } from "lib/user/utils";
@@ -140,21 +140,21 @@ export function AppSidebarUserInner(props: {
             <DropdownMenuItem
               onClick={() => {
                 window.open(
-                  "https://github.com/cgoinglove/better-chatbot/issues/new",
+                  "https://www.facebook.com/sallyacademic",
                   "_blank",
                 );
               }}
             >
-              <GithubIcon className="size-4 fill-foreground" />
-              <span>{t("reportAnIssue")}</span>
+              <Facebook className="size-4 text-foreground" />
+              <span>{t("followOnFacebook")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
-                window.open("https://discord.gg/gCRu69Upnp", "_blank");
+                window.open("https://www.instagram.com/sallyhooda99", "_blank");
               }}
             >
-              <DiscordIcon className="size-4 fill-foreground" />
-              <span>{t("joinCommunity")}</span>
+              <Instagram className="size-4 text-foreground" />
+              <span>{t("followOnInstagram")}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
 
