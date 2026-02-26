@@ -192,7 +192,7 @@ export default function MentionInput({
       editorProps: {
         attributes: {
           class:
-            "w-full max-h-80 min-h-[2rem] break-words overflow-y-auto resize-none focus:outline-none px-2 py-1 prose prose-sm dark:prose-invert text-right",
+            "w-full max-h-80 min-h-[2rem] break-words overflow-y-auto resize-none focus:outline-none px-2 py-1 prose prose-sm dark:prose-invert ltr:text-left rtl:text-right",
         },
       },
     };
@@ -268,7 +268,7 @@ export default function MentionInput({
     if (!editor?.isEmpty) return null;
 
     return (
-      <div className="absolute top-1 right-2 text-muted-foreground pointer-events-none">
+      <div className="absolute top-1 ltr:left-2 rtl:right-2 text-muted-foreground pointer-events-none">
         {placeholder}
       </div>
     );
