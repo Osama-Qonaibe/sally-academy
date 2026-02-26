@@ -54,7 +54,7 @@ export const buildUserSystemPrompt = (
   agent?: Agent,
 ) => {
   const assistantName =
-    agent?.name || userPreferences?.botName || "better-chatbot";
+    agent?.name || userPreferences?.botName || "Sally Academy";
   const currentTime = format(new Date(), "EEEE, MMMM d, yyyy 'at' h:mm:ss a");
 
   let prompt = `You are ${assistantName}`;
@@ -65,7 +65,6 @@ export const buildUserSystemPrompt = (
 
   prompt += `. The current date and time is ${currentTime}.`;
 
-  // Agent-specific instructions as primary core
   if (agent?.instructions?.systemPrompt) {
     prompt += `
   # Core Instructions
@@ -74,7 +73,6 @@ export const buildUserSystemPrompt = (
   </core_capabilities>`;
   }
 
-  // User context section (first priority)
   const userInfo: string[] = [];
   if (user?.name) userInfo.push(`Name: ${user.name}`);
   if (user?.email) userInfo.push(`Email: ${user.email}`);
@@ -89,7 +87,6 @@ ${userInfo.join("\n")}
 </user_information>`;
   }
 
-  // General capabilities (secondary)
   prompt += `
 
 <general_capabilities>
@@ -99,7 +96,6 @@ You can assist with:
 - Adapting communication to user preferences and context
 </general_capabilities>`;
 
-  // Communication preferences
   const displayName = userPreferences?.displayName || user?.name;
   const hasStyleExample = userPreferences?.responseStyleExample;
 
@@ -137,7 +133,7 @@ export const buildSpeechSystemPrompt = (
   userPreferences?: UserPreferences,
   agent?: Agent,
 ) => {
-  const assistantName = agent?.name || userPreferences?.botName || "Assistant";
+  const assistantName = agent?.name || userPreferences?.botName || "Sally Academy";
   const currentTime = format(new Date(), "EEEE, MMMM d, yyyy 'at' h:mm:ss a");
 
   let prompt = `You are ${assistantName}`;
@@ -148,7 +144,6 @@ export const buildSpeechSystemPrompt = (
 
   prompt += `. The current date and time is ${currentTime}.`;
 
-  // Agent-specific instructions as primary core
   if (agent?.instructions?.systemPrompt) {
     prompt += `# Core Instructions
     <core_capabilities>
@@ -156,7 +151,6 @@ export const buildSpeechSystemPrompt = (
     </core_capabilities>`;
   }
 
-  // User context section (first priority)
   const userInfo: string[] = [];
   if (user?.name) userInfo.push(`Name: ${user.name}`);
   if (user?.email) userInfo.push(`Email: ${user.email}`);
@@ -171,7 +165,6 @@ ${userInfo.join("\n")}
 </user_information>`;
   }
 
-  // Voice-specific capabilities
   prompt += `
 
 <voice_capabilities>
@@ -181,7 +174,6 @@ You excel at conversational voice interactions by:
 - Adapting communication to user preferences and context
 </voice_capabilities>`;
 
-  // Communication preferences
   const displayName = userPreferences?.displayName || user?.name;
   const hasStyleExample = userPreferences?.responseStyleExample;
 
@@ -207,7 +199,6 @@ ${userPreferences.responseStyleExample}
 </communication_preferences>`;
   }
 
-  // Voice-specific guidelines
   prompt += `
 
 <voice_interaction_guidelines>
