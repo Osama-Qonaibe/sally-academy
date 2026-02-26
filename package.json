@@ -1,10 +1,15 @@
 {
-  "name": "better-chatbot",
-  "version": "1.26.0",
+  "name": "sally-search-engine",
+  "version": "1.0.0",
   "private": true,
-  "author": "cgoinglove",
+  "author": "Osama Qonaibe",
+  "description": "Sally Academic Search - AI-powered educational search engine",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Osama-Qonaibe/sally-search-engine"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:turbopack": "next dev --turbopack",
@@ -16,8 +21,6 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "test:e2e:seed": "dotenv -- tsx scripts/seed-test-users.ts",
-    "test:e2e:clean": "dotenv -- tsx scripts/cleanup-all-test-data.ts",
     "lint": "biome lint",
     "lint:fix": "biome lint --write --unsafe",
     "format": "biome format --write",
@@ -40,9 +43,9 @@
     "docker-compose:logs": "docker-compose -f docker/compose.yml logs -f",
     "docker-compose:ps": "docker-compose -f docker/compose.yml ps",
     "docker-compose:update": "git pull && docker-compose -f docker/compose.yml up -d --build",
-    "docker:pg": "docker run --name better-chatbot-pg -e POSTGRES_PASSWORD=your_password -e POSTGRES_USER=your_username -e POSTGRES_DB=your_database_name -p 5432:5432 -d postgres",
-    "docker:redis": "docker run --name better-chatbot-redis -p 6379:6379 -d redis:7-alpine",
-    "docker:app": "docker build -f docker/Dockerfile -t better-chatbot . && docker run -p 3000:3000 -e NO_HTTPS=1 better-chatbot",
+    "docker:pg": "docker run --name sally-postgres -e POSTGRES_PASSWORD=your_password -e POSTGRES_USER=your_username -e POSTGRES_DB=your_database_name -p 5432:5432 -d postgres",
+    "docker:redis": "docker run --name sally-redis -p 6379:6379 -d redis:7-alpine",
+    "docker:app": "docker build -f docker/Dockerfile -t sally-search-engine . && docker run -p 3000:3000 -e NO_HTTPS=1 sally-search-engine",
     "prepare": "husky",
     "playwright:install": "playwright install",
     "check": "pnpm lint:fix && pnpm check-types && pnpm test"
