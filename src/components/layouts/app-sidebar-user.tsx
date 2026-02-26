@@ -190,7 +190,7 @@ function SelectTheme() {
   return (
     <DropdownMenuSub>
       <DropdownMenuSubTrigger
-        className="flex items-center flex-row-reverse justify-end gap-2"
+        className="flex flex-row-reverse justify-end gap-2"
         icon={
           <>
             <span className="text-muted-foreground text-xs min-w-0 truncate">
@@ -202,8 +202,8 @@ function SelectTheme() {
           </>
         }
       >
-        <Palette className="mr-2 size-4" />
-        <span className="mr-auto">{t("theme")}</span>
+        <Palette className="size-4" />
+        <span>{t("theme")}</span>
       </DropdownMenuSubTrigger>
       <DropdownMenuPortal>
         <DropdownMenuSubContent className="w-48">
@@ -272,7 +272,7 @@ function SelectLanguage() {
   return (
     <DropdownMenuSub>
       <DropdownMenuSubTrigger className="flex flex-row-reverse justify-end gap-2">
-        <Languages className="mr-2 size-4" />
+        <Languages className="size-4" />
         <span>{t("language")}</span>
       </DropdownMenuSubTrigger>
       <DropdownMenuPortal>
