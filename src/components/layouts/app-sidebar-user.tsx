@@ -121,7 +121,7 @@ export function AppSidebarUserInner(props: {
             <DropdownMenuSeparator />
 
             <DropdownMenuItem
-              className="cursor-pointer"
+              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
               onClick={() => appStoreMutate({ openChatPreferences: true })}
             >
               <Settings2 className="size-4 text-foreground" />
@@ -131,13 +131,14 @@ export function AppSidebarUserInner(props: {
             <SelectLanguage />
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="cursor-pointer"
+              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
               onClick={() => appStoreMutate({ openShortcutsPopup: true })}
             >
               <Command className="size-4 text-foreground" />
               <span>{t("keyboardShortcuts")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
+              className="flex flex-row-reverse justify-end gap-2"
               onClick={() => {
                 window.open(
                   "https://www.facebook.com/sallyacademic",
@@ -149,6 +150,7 @@ export function AppSidebarUserInner(props: {
               <span>{t("followOnFacebook")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
+              className="flex flex-row-reverse justify-end gap-2"
               onClick={() => {
                 window.open("https://www.instagram.com/sallyhooda99", "_blank");
               }}
@@ -160,14 +162,14 @@ export function AppSidebarUserInner(props: {
 
             <DropdownMenuItem
               onClick={() => appStoreMutate({ openUserSettings: true })}
-              className="cursor-pointer"
+              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
               data-testid="user-settings-menu-item"
             >
               <Settings className="size-4 text-foreground" />
               <span>{t("userSettings")}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout} className="cursor-pointer">
+            <DropdownMenuItem onClick={logout} className="cursor-pointer flex flex-row-reverse justify-end gap-2">
               <LogOutIcon className="size-4 text-foreground" />
               <span>{t("signOut")}</span>
             </DropdownMenuItem>
@@ -188,7 +190,7 @@ function SelectTheme() {
   return (
     <DropdownMenuSub>
       <DropdownMenuSubTrigger
-        className="flex items-center"
+        className="flex items-center flex-row-reverse justify-end gap-2"
         icon={
           <>
             <span className="text-muted-foreground text-xs min-w-0 truncate">
@@ -269,7 +271,7 @@ function SelectLanguage() {
 
   return (
     <DropdownMenuSub>
-      <DropdownMenuSubTrigger>
+      <DropdownMenuSubTrigger className="flex flex-row-reverse justify-end gap-2">
         <Languages className="mr-2 size-4" />
         <span>{t("language")}</span>
       </DropdownMenuSubTrigger>
