@@ -30,7 +30,7 @@ import { BACKGROUND_COLORS, EMOJI_DATA } from "lib/const";
 import { cn } from "lib/utils";
 import { canCreateAgent } from "lib/auth/client-permissions";
 
-const DISPLAY_LIMIT = 5; // Number of agents to show when collapsed
+const DISPLAY_LIMIT = 5;
 
 export function AppSidebarAgents({ userRole }: { userRole?: string | null }) {
   const mounted = useMounted();
@@ -39,7 +39,7 @@ export function AppSidebarAgents({ userRole }: { userRole?: string | null }) {
   const [expanded, setExpanded] = useState(false);
   const { bookmarkedAgents, myAgents, isLoading, sharedAgents } = useAgents({
     limit: 50,
-  }); // Increase limit since we're not artificially limiting display
+  });
 
   const agents = useMemo(() => {
     return [...myAgents, ...bookmarkedAgents];
@@ -93,6 +93,10 @@ export function AppSidebarAgents({ userRole }: { userRole?: string | null }) {
     },
     [agents, router],
   );
+
+  if (!canCreateAgent(userRole)) {
+    return null;
+  }
 
   return (
     <SidebarGroup>
@@ -250,7 +254,6 @@ export function AppSidebarAgents({ userRole }: { userRole?: string | null }) {
                 </div>
               </div>
 
-              {/* Show More/Less Button */}
               {agents.length > DISPLAY_LIMIT && (
                 <SidebarMenu className="group/showmore">
                   <SidebarMenuItem className="px-2 cursor-pointer">
