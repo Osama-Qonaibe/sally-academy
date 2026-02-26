@@ -1,5 +1,9 @@
 {
   "Chat": {
     "placeholder": "اسأل سالي"
+  },
+  "Layout": {
+    "followOnFacebook": "تابعنا على فيسبوك",
+    "followOnInstagram": "تابعنا على إنستقرام"
   }
 }

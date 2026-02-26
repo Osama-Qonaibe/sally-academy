@@ -46,5 +46,9 @@
   },
   "Chat": {
     "placeholder": "Ask Sally"
+  },
+  "Layout": {
+    "followOnFacebook": "Follow on Facebook",
+    "followOnInstagram": "Follow on Instagram"
   }
 }

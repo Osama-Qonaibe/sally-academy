@@ -1,5 +1,9 @@
 {
   "Chat": {
     "placeholder": "問 Sally"
+  },
+  "Layout": {
+    "followOnFacebook": "在 Facebook 上關注我們",
+    "followOnInstagram": "在 Instagram 上關注我們"
   }
 }

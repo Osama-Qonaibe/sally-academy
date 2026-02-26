@@ -1,5 +1,9 @@
 {
   "Chat": {
     "placeholder": "Sally に聞く"
+  },
+  "Layout": {
+    "followOnFacebook": "Facebookでフォロー",
+    "followOnInstagram": "Instagramでフォロー"
   }
 }

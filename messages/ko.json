@@ -1,5 +1,9 @@
 {
   "Chat": {
     "placeholder": "Sally에게 물어보기"
+  },
+  "Layout": {
+    "followOnFacebook": "Facebook에서 팔로우",
+    "followOnInstagram": "Instagram에서 팔로우"
   }
 }

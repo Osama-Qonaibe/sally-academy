@@ -1,5 +1,9 @@
 {
   "Chat": {
     "placeholder": "Pregunta a Sally"
+  },
+  "Layout": {
+    "followOnFacebook": "Síguenos en Facebook",
+    "followOnInstagram": "Síguenos en Instagram"
   }
 }
