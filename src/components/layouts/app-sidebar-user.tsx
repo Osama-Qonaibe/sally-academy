@@ -121,24 +121,24 @@ export function AppSidebarUserInner(props: {
             <DropdownMenuSeparator />
 
             <DropdownMenuItem
-              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
+              className="cursor-pointer flex justify-between"
               onClick={() => appStoreMutate({ openChatPreferences: true })}
             >
+              <span className="text-right flex-1">{t("chatPreferences")}</span>
               <Settings2 className="size-4 text-foreground" />
-              <span>{t("chatPreferences")}</span>
             </DropdownMenuItem>
             <SelectTheme />
             <SelectLanguage />
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
+              className="cursor-pointer flex justify-between"
               onClick={() => appStoreMutate({ openShortcutsPopup: true })}
             >
+              <span className="text-right flex-1">{t("keyboardShortcuts")}</span>
               <Command className="size-4 text-foreground" />
-              <span>{t("keyboardShortcuts")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="flex flex-row-reverse justify-end gap-2"
+              className="flex justify-between"
               onClick={() => {
                 window.open(
                   "https://www.facebook.com/sallyacademic",
@@ -146,32 +146,32 @@ export function AppSidebarUserInner(props: {
                 );
               }}
             >
+              <span className="text-right flex-1">{t("followOnFacebook")}</span>
               <Facebook className="size-4 text-foreground" />
-              <span>{t("followOnFacebook")}</span>
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="flex flex-row-reverse justify-end gap-2"
+              className="flex justify-between"
               onClick={() => {
                 window.open("https://www.instagram.com/sallyhooda99", "_blank");
               }}
             >
+              <span className="text-right flex-1">{t("followOnInstagram")}</span>
               <Instagram className="size-4 text-foreground" />
-              <span>{t("followOnInstagram")}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
 
             <DropdownMenuItem
               onClick={() => appStoreMutate({ openUserSettings: true })}
-              className="cursor-pointer flex flex-row-reverse justify-end gap-2"
+              className="cursor-pointer flex justify-between"
               data-testid="user-settings-menu-item"
             >
+              <span className="text-right flex-1">{t("userSettings")}</span>
               <Settings className="size-4 text-foreground" />
-              <span>{t("userSettings")}</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout} className="cursor-pointer flex flex-row-reverse justify-end gap-2">
+            <DropdownMenuItem onClick={logout} className="cursor-pointer flex justify-between">
+              <span className="text-right flex-1">{t("signOut")}</span>
               <LogOutIcon className="size-4 text-foreground" />
-              <span>{t("signOut")}</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -190,7 +190,7 @@ function SelectTheme() {
   return (
     <DropdownMenuSub>
       <DropdownMenuSubTrigger
-        className="flex flex-row-reverse justify-end gap-2"
+        className="flex justify-between"
         icon={
           <>
             <span className="text-muted-foreground text-xs min-w-0 truncate">
@@ -202,8 +202,8 @@ function SelectTheme() {
           </>
         }
       >
+        <span className="text-right flex-1">{t("theme")}</span>
         <Palette className="size-4" />
-        <span>{t("theme")}</span>
       </DropdownMenuSubTrigger>
       <DropdownMenuPortal>
         <DropdownMenuSubContent className="w-48">
@@ -271,9 +271,9 @@ function SelectLanguage() {
 
   return (
     <DropdownMenuSub>
-      <DropdownMenuSubTrigger className="flex flex-row-reverse justify-end gap-2">
+      <DropdownMenuSubTrigger className="flex justify-between">
+        <span className="text-right flex-1">{t("language")}</span>
         <Languages className="size-4" />
-        <span>{t("language")}</span>
       </DropdownMenuSubTrigger>
       <DropdownMenuPortal>
         <DropdownMenuSubContent className="w-48 max-h-96 overflow-y-auto">
