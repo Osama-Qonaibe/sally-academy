@@ -1,10 +1,5 @@
 {
-  "Auth": {
-    "Intro": {
-      "description": "Sally Academyへようこそ。AIを活用した研究・学術ツールをご体験ください。"
-    }
-  },
-  "Agent": {
-    "agentNamePlaceholder": "sally-agent"
+  "Chat": {
+    "placeholder": "Sally に聞く"
   }
 }

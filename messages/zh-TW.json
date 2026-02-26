@@ -1,10 +1,5 @@
 {
-  "Auth": {
-    "Intro": {
-      "description": "歡迎來到 Sally Academy。登入體驗我們的 AI 驅動研究和學術工具。"
-    }
-  },
-  "Agent": {
-    "agentNamePlaceholder": "sally-agent"
+  "Chat": {
+    "placeholder": "問 Sally"
   }
 }
