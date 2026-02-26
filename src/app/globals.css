@@ -1517,3 +1517,38 @@
     @apply transition-colors duration-300;
   }
 }
+
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] [data-sidebar="sidebar"] {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] [data-sidebar="sidebar"][data-state="collapsed"] {
+  right: calc(var(--sidebar-width-icon) * -1);
+}
+
+[dir="rtl"] [data-sidebar="sidebar"][data-variant="inset"] {
+  left: auto;
+  right: var(--sidebar-width-icon);
+}
+
+[dir="rtl"] .group[data-sidebar="sidebar"][data-collapsible="icon"] .group-data-\[collapsible\=icon\]\:left-auto {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] [data-sidebar="menu-button"] > svg:first-child,
+[dir="rtl"] [data-sidebar="menu-button"] > span:first-child {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+[dir="rtl"] [data-sidebar="menu-button"] > svg:last-child,
+[dir="rtl"] [data-sidebar="menu-button"] > span:last-child {
+  margin-left: 0;
+  margin-right: auto;
+}
