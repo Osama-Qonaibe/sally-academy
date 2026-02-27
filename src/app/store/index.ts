@@ -18,7 +18,7 @@ export interface UploadedFile {
   progress?: number;
   previewUrl?: string;
   abortController?: AbortController;
-  dataUrl?: string; // Full data URL format: "data:image/png;base64,..."
+  dataUrl?: string;
 }
 
 export interface AppState {
@@ -86,8 +86,8 @@ const initialState: AppState = {
   allowedMcpServers: undefined,
   openUserSettings: false,
   allowedAppDefaultToolkit: [
-    AppDefaultToolkit.Code,
     AppDefaultToolkit.Visualization,
+    AppDefaultToolkit.WebSearch,
   ],
   toolPresets: [],
   chatModel: undefined,
