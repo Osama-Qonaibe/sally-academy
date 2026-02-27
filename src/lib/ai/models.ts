@@ -100,6 +100,11 @@ const hiddenModels = new Set<string>([
   "ollama/gemma3:1b",
   "ollama/gemma3:4b",
   "ollama/gemma3:12b",
+  "groq/kimi-k2-instruct",
+  "groq/llama-4-scout-17b",
+  "groq/gpt-oss-20b",
+  "groq/gpt-oss-120b",
+  "groq/qwen3-32b",
 ]);
 
 const staticUnsupportedModels = new Set([
@@ -202,7 +207,7 @@ export const getFilePartSupportedMimeTypes = (model: LanguageModel) => {
   return staticFilePartSupportByModel.get(model) ?? [];
 };
 
-const fallbackModel = staticModels.groq["gpt-oss-20b"];
+const fallbackModel = staticModels.openRouter["qwen3-14b:free"];
 
 export const customModelProvider = {
   modelsInfo: Object.entries(allModels).map(([provider, models]) => ({
