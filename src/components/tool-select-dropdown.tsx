@@ -11,7 +11,6 @@ import {
   CodeIcon,
   GlobeIcon,
   HardDriveUploadIcon,
-  ImagesIcon,
   InfoIcon,
   Loader,
   MessageCircle,
