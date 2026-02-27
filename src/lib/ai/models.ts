@@ -100,6 +100,7 @@ const hiddenModels = new Set<string>([
   "ollama/gemma3:1b",
   "ollama/gemma3:4b",
   "ollama/gemma3:12b",
+  "groq/llama-4-scout-17b",
   "groq/kimi-k2-instruct",
   "groq/gpt-oss-20b",
   "groq/gpt-oss-120b",
