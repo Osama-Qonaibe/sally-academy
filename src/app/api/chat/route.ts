@@ -68,7 +68,6 @@ export async function POST(request: Request) {
       toolChoice,
       allowedAppDefaultToolkit,
       allowedMcpServers,
-      imageTool,
       mentions = [],
       attachments = [],
     } = chatApiSchemaRequestBodySchema.parse(json);
@@ -297,13 +296,9 @@ export async function POST(request: Request) {
         logger.info(
           `allowedMcpTools: ${allowedMcpTools.length ?? 0}, allowedAppDefaultToolkit: ${allowedAppDefaultToolkit?.length ?? 0}`,
         );
-        if (useImageTool) {
-          logger.info(`binding tool count Image: DISABLED`);
-        } else {
-          logger.info(
-            `binding tool count APP_DEFAULT: ${Object.keys(APP_DEFAULT_TOOLS ?? {}).length}, MCP: ${Object.keys(MCP_TOOLS ?? {}).length}, Workflow: ${Object.keys(WORKFLOW_TOOLS ?? {}).length}`,
-          );
-        }
+        logger.info(
+          `binding tool count APP_DEFAULT: ${Object.keys(APP_DEFAULT_TOOLS ?? {}).length}, MCP: ${Object.keys(MCP_TOOLS ?? {}).length}, Workflow: ${Object.keys(WORKFLOW_TOOLS ?? {}).length}`,
+        );
         logger.info(`model: ${chatModel?.provider}/${chatModel?.model}`);
 
         const result = streamText({
