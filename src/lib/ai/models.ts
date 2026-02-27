@@ -79,6 +79,29 @@ const staticModels = {
   },
 };
 
+const hiddenModels = new Set<string>([
+  "openai/gpt-4.1",
+  "openai/gpt-4.1-mini",
+  "openai/o4-mini",
+  "openai/o3",
+  "openai/gpt-5.1-chat",
+  "openai/gpt-5.1",
+  "openai/gpt-5.1-codex",
+  "openai/gpt-5.1-codex-mini",
+  "google/gemini-2.5-flash",
+  "google/gemini-3-pro",
+  "google/gemini-2.5-pro",
+  "anthropic/sonnet-4.5",
+  "anthropic/haiku-4.5",
+  "anthropic/opus-4.5",
+  "xai/grok-4-1-fast",
+  "xai/grok-4-1",
+  "xai/grok-3-mini",
+  "ollama/gemma3:1b",
+  "ollama/gemma3:4b",
+  "ollama/gemma3:12b",
+]);
+
 const staticUnsupportedModels = new Set([
   staticModels.openai["o4-mini"],
   staticModels.ollama["gemma3:1b"],
@@ -179,19 +202,22 @@ export const getFilePartSupportedMimeTypes = (model: LanguageModel) => {
   return staticFilePartSupportByModel.get(model) ?? [];
 };
 
-const fallbackModel = staticModels.openai["gpt-4.1"];
+const fallbackModel = staticModels.groq["gpt-oss-20b"];
 
 export const customModelProvider = {
   modelsInfo: Object.entries(allModels).map(([provider, models]) => ({
     provider,
-    models: Object.entries(models).map(([name, model]) => ({
-      name,
-      isToolCallUnsupported: isToolCallUnsupportedModel(model),
-      isImageInputUnsupported: isImageInputUnsupportedModel(model),
-      supportedFileMimeTypes: [...getFilePartSupportedMimeTypes(model)],
-    })),
+    models: Object.entries(models)
+      .map(([name, model]) => ({
+        name,
+        isToolCallUnsupported: isToolCallUnsupportedModel(model),
+        isImageInputUnsupported: isImageInputUnsupportedModel(model),
+        supportedFileMimeTypes: [...getFilePartSupportedMimeTypes(model)],
+        hidden: hiddenModels.has(`${provider}/${name}`),
+      }))
+      .filter(m => !m.hidden),
     hasAPIKey: checkProviderAPIKey(provider as keyof typeof staticModels),
-  })),
+  })).filter(p => p.models.length > 0),
   getModel: (model?: ChatModel): LanguageModel => {
     if (!model) return fallbackModel;
     return allModels[model.provider]?.[model.model] || fallbackModel;
@@ -220,7 +246,7 @@ function checkProviderAPIKey(provider: keyof typeof staticModels) {
       key = process.env.OPENROUTER_API_KEY;
       break;
     default:
-      return true; // assume the provider has an API key
+      return true;
   }
   return !!key && key != "****";
 }
