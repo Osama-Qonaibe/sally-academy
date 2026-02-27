@@ -62,20 +62,20 @@ const staticModels = {
     "gemma3:12b": ollama("gemma3:12b"),
   },
   groq: {
-    "kimi-k2-instruct": groq("moonshotai/kimi-k2-instruct"),
     "llama-4-scout-17b": groq("meta-llama/llama-4-scout-17b-16e-instruct"),
+    "qwen3-32b": groq("qwen/qwen3-32b"),
+    "kimi-k2-instruct": groq("moonshotai/kimi-k2-instruct"),
     "gpt-oss-20b": groq("openai/gpt-oss-20b"),
     "gpt-oss-120b": groq("openai/gpt-oss-120b"),
-    "qwen3-32b": groq("qwen/qwen3-32b"),
   },
   openRouter: {
+    "deepseek-v3:free": openrouter("deepseek/deepseek-chat-v3-0324:free"),
+    "qwen3-14b:free": openrouter("qwen/qwen3-14b:free"),
+    "gemini-2.0-flash-exp:free": openrouter("google/gemini-2.0-flash-exp:free"),
     "gpt-oss-20b:free": openrouter("openai/gpt-oss-20b:free"),
     "qwen3-8b:free": openrouter("qwen/qwen3-8b:free"),
-    "qwen3-14b:free": openrouter("qwen/qwen3-14b:free"),
     "qwen3-coder:free": openrouter("qwen/qwen3-coder:free"),
     "deepseek-r1:free": openrouter("deepseek/deepseek-r1-0528:free"),
-    "deepseek-v3:free": openrouter("deepseek/deepseek-chat-v3-0324:free"),
-    "gemini-2.0-flash-exp:free": openrouter("google/gemini-2.0-flash-exp:free"),
   },
 };
 
@@ -101,10 +101,12 @@ const hiddenModels = new Set<string>([
   "ollama/gemma3:4b",
   "ollama/gemma3:12b",
   "groq/kimi-k2-instruct",
-  "groq/llama-4-scout-17b",
   "groq/gpt-oss-20b",
   "groq/gpt-oss-120b",
-  "groq/qwen3-32b",
+  "openRouter/gpt-oss-20b:free",
+  "openRouter/qwen3-8b:free",
+  "openRouter/qwen3-coder:free",
+  "openRouter/deepseek-r1:free",
 ]);
 
 const staticUnsupportedModels = new Set([
@@ -207,7 +209,7 @@ export const getFilePartSupportedMimeTypes = (model: LanguageModel) => {
   return staticFilePartSupportByModel.get(model) ?? [];
 };
 
-const fallbackModel = staticModels.openRouter["qwen3-14b:free"];
+const fallbackModel = staticModels.google["gemini-2.5-flash-lite"];
 
 export const customModelProvider = {
   modelsInfo: Object.entries(allModels).map(([provider, models]) => ({
