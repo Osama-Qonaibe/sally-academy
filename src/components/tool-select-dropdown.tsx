@@ -77,9 +77,7 @@ import { mutate } from "swr";
 import { handleErrorWithToast } from "ui/shared-toast";
 import { useAgents } from "@/hooks/queries/use-agents";
 import { redriectMcpOauth } from "lib/ai/mcp/oauth-redirect";
-import { GeminiIcon } from "ui/gemini-icon";
 import { useChatModels } from "@/hooks/queries/use-chat-models";
-import { OpenAIIcon } from "ui/openai-icon";
 
 interface ToolSelectDropdownProps {
   align?: "start" | "end" | "center";
@@ -1030,14 +1028,4 @@ function AgentSelector({
       </DropdownMenuSub>
     </DropdownMenuGroup>
   );
-}
-
-function ImageGeneratorSelector({
-  onGenerateImage,
-  modelInfo,
-}: {
-  onGenerateImage?: (provider?: "google" | "openai") => void;
-  modelInfo?: { isToolCallUnsupported?: boolean };
-}) {
-  return null;
 }
