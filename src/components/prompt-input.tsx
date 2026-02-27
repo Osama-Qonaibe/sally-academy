@@ -41,10 +41,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "ui/dropdown-menu";
 import { cn } from "@/lib/utils";
@@ -514,33 +510,6 @@ export default function PromptInput({
                       <PaperclipIcon className="mr-2 size-4" />
                       {t("uploadImage")}
                     </DropdownMenuItem>
-
-                    <DropdownMenuSub className="hidden">
-                      <DropdownMenuSubTrigger className="cursor-pointer">
-                        <ImagesIcon className="mr-4 size-4 text-muted-foreground" />
-                        <span className="mr-4">{t("generateImage")}</span>
-                      </DropdownMenuSubTrigger>
-                      <DropdownMenuPortal>
-                        <DropdownMenuSubContent>
-                          <DropdownMenuItem
-                            disabled={modelInfo?.isToolCallUnsupported}
-                            onClick={() => handleGenerateImage("google")}
-                            className="cursor-pointer"
-                          >
-                            <GeminiIcon className="mr-2 size-4" />
-                            Gemini (Nano Banana)
-                          </DropdownMenuItem>
-                          <DropdownMenuItem
-                            disabled={modelInfo?.isToolCallUnsupported}
-                            onClick={() => handleGenerateImage("openai")}
-                            className="cursor-pointer"
-                          >
-                            <OpenAIIcon className="mr-2 size-4" />
-                            OpenAI
-                          </DropdownMenuItem>
-                        </DropdownMenuSubContent>
-                      </DropdownMenuPortal>
-                    </DropdownMenuSub>
                   </DropdownMenuContent>
                 </DropdownMenu>
 
