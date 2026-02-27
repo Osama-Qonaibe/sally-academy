@@ -251,16 +251,6 @@ export function ToolSelectDropdown({
           <DropdownMenuSeparator />
         </div>
         <AgentSelector onSelectAgent={onSelectAgent} />
-        <div className="py-1">
-          <DropdownMenuSeparator />
-        </div>
-        <ImageGeneratorSelector
-          onGenerateImage={onGenerateImage}
-          modelInfo={modelInfo}
-        />
-        <div className="py-1">
-          <DropdownMenuSeparator />
-        </div>
         <div className="py-2">
           <ToolPresets />
           <div className="py-1">
@@ -455,7 +445,6 @@ function WorkflowToolSelector({
   const { data: session } = authClient.useSession();
   const currentUserId = session?.user?.id;
 
-  // Separate user's workflows from shared workflows
   const myWorkflows = workflowToolList.filter(
     (w) => w.userId === currentUserId,
   );
@@ -495,7 +484,6 @@ function WorkflowToolSelector({
               </div>
             ) : (
               <>
-                {/* My Workflows */}
                 {myWorkflows.map((workflow) => (
                   <DropdownMenuItem
                     key={workflow.id}
@@ -526,7 +514,6 @@ function WorkflowToolSelector({
                   <DropdownMenuSeparator />
                 )}
 
-                {/* Shared Workflows */}
                 {sharedWorkflows.map((workflow) => (
                   <DropdownMenuItem
                     key={workflow.id}
@@ -973,7 +960,6 @@ function AgentSelector({
           <DropdownMenuSubContent className="w-80 relative">
             {emptyAgent}
 
-            {/* My Agents */}
             {myAgents.map((agent) => (
               <DropdownMenuItem
                 key={agent.id}
@@ -1054,36 +1040,5 @@ function ImageGeneratorSelector({
   onGenerateImage?: (provider?: "google" | "openai") => void;
   modelInfo?: { isToolCallUnsupported?: boolean };
 }) {
-  const t = useTranslations("Chat");
-
-  return (
-    <DropdownMenuGroup>
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger className="text-xs flex items-center gap-2 font-semibold cursor-pointer">
-          <ImagesIcon className="size-3.5" />
-          {t("generateImage")}
-        </DropdownMenuSubTrigger>
-        <DropdownMenuPortal>
-          <DropdownMenuSubContent>
-            <DropdownMenuItem
-              disabled={modelInfo?.isToolCallUnsupported}
-              onClick={() => onGenerateImage?.("google")}
-              className="cursor-pointer"
-            >
-              <GeminiIcon className="mr-2 size-4" />
-              Gemini (Nano Banana)
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              disabled={modelInfo?.isToolCallUnsupported}
-              onClick={() => onGenerateImage?.("openai")}
-              className="cursor-pointer"
-            >
-              <OpenAIIcon className="mr-2 size-4" />
-              OpenAI
-            </DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuPortal>
-      </DropdownMenuSub>
-    </DropdownMenuGroup>
-  );
+  return null;
 }
