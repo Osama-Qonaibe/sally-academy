@@ -77,7 +77,6 @@ import { mutate } from "swr";
 import { handleErrorWithToast } from "ui/shared-toast";
 import { useAgents } from "@/hooks/queries/use-agents";
 import { redriectMcpOauth } from "lib/ai/mcp/oauth-redirect";
-import { useChatModels } from "@/hooks/queries/use-chat-models";
 
 interface ToolSelectDropdownProps {
   align?: "start" | "end" | "center";
@@ -122,18 +121,6 @@ export function ToolSelectDropdown({
 
   const t = useTranslations("Chat.Tool");
   const { isLoading } = useMcpList();
-  const { data: providers } = useChatModels();
-  const [globalModel] = appStore(useShallow((state) => [state.chatModel]));
-
-  const modelInfo = useMemo(() => {
-    const provider = providers?.find(
-      (provider) => provider.provider === globalModel?.provider,
-    );
-    const model = provider?.models.find(
-      (model) => model.name === globalModel?.model,
-    );
-    return model;
-  }, [providers, globalModel]);
 
   useWorkflowToolList({
     refreshInterval: 1000 * 60 * 5,
