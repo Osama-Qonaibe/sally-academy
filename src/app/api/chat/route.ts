@@ -45,7 +45,6 @@ import {
 import { getSession } from "auth/server";
 import { colorize } from "consola/utils";
 import { generateUUID } from "lib/utils";
-import { nanoBananaTool, openaiImageTool } from "lib/ai/tools/image";
 import { ImageToolName } from "lib/ai/tools";
 import { buildCsvIngestionPreviewParts } from "@/lib/ai/ingest/csv-ingest";
 import { serverFileStorage } from "lib/file-storage";
@@ -186,7 +185,7 @@ export async function POST(request: Request) {
       mentions.push(...agent.instructions.mentions);
     }
 
-    const useImageTool = Boolean(imageTool?.model);
+    const useImageTool = false;
 
     const isToolCallAllowed =
       supportToolCall &&
@@ -268,14 +267,7 @@ export async function POST(request: Request) {
           !supportToolCall && buildToolCallUnsupportedModelSystemPrompt,
         );
 
-        const IMAGE_TOOL: Record<string, Tool> = useImageTool
-          ? {
-              [ImageToolName]:
-                imageTool?.model === "google"
-                  ? nanoBananaTool
-                  : openaiImageTool,
-            }
-          : {};
+        const IMAGE_TOOL: Record<string, Tool> = {};
         const vercelAITooles = safe({
           ...MCP_TOOLS,
           ...WORKFLOW_TOOLS,
@@ -288,7 +280,7 @@ export async function POST(request: Request) {
                 : t;
             return {
               ...bindingTools,
-              ...APP_DEFAULT_TOOLS, // APP_DEFAULT_TOOLS Not Supported Manual
+              ...APP_DEFAULT_TOOLS,
               ...IMAGE_TOOL,
             };
           })
@@ -307,7 +299,7 @@ export async function POST(request: Request) {
           `allowedMcpTools: ${allowedMcpTools.length ?? 0}, allowedAppDefaultToolkit: ${allowedAppDefaultToolkit?.length ?? 0}`,
         );
         if (useImageTool) {
-          logger.info(`binding tool count Image: ${imageTool?.model}`);
+          logger.info(`binding tool count Image: DISABLED`);
         } else {
           logger.info(
             `binding tool count APP_DEFAULT: ${Object.keys(APP_DEFAULT_TOOLS ?? {}).length}, MCP: ${Object.keys(MCP_TOOLS ?? {}).length}, Workflow: ${Object.keys(WORKFLOW_TOOLS ?? {}).length}`,
