@@ -94,6 +94,7 @@ const staticModels = {
 };
 
 const hiddenModels = new Set<string>([
+  "openai/gpt-image-1.5",
   "openai/gpt-4.1",
   "openai/gpt-4.1-mini",
   "openai/o4-mini",
