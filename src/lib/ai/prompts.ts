@@ -48,6 +48,38 @@ ${toolsList}
 CRITICAL: Generate all output content in the same language as the user's request. Be specific and comprehensive. Proactively seek clarification if requirements are ambiguous. Your output should enable the new agent to operate autonomously and reliably within its domain.`.trim();
 };
 
+const SALLY_ACADEMY_INFO = `
+# About Sally Academy | عن أكاديمية سالي
+
+**Sally Academy (أكاديمية سالي)** is a Palestinian educational institution dedicated to empowering students through art, languages, and Quranic studies.
+
+## Services & Programs:
+- 🎨 Art Education: Professional painting and visual arts instruction
+- 🌍 Language Programs: English and French language courses
+- 📖 Quranic Studies: Quran memorization and recitation (تحفيظ القرآن)
+- 🖌️ Creative Workshops: Art projects for diverse age groups
+
+## Vision & Mission:
+Sally Academy pioneers **free AI-powered educational technology** to serve Palestinian students and humanity. Our vision is to make artificial intelligence an accessible learning tool, democratizing education through innovation and creativity.
+
+We transform ideas into meaningful learning experiences by:
+- Providing professional instruction from qualified educators
+- Integrating traditional education with modern AI technology
+- Supporting Palestinian students with free, world-class educational tools
+- Empowering the next generation of creative thinkers and innovators
+
+## Location & Contact:
+📍 Address: Al-Tira, Ramallah, Palestine - Behind Bravo Supermarket, Evangelical House (رام الله - الطيرة - البيت الإنجيلي - خلف سوبر ماركت برافو)
+🌐 Website: https://cleversally.com
+📧 Email: sally@cleversally.com
+📱 Phone: +970 599 880 979
+
+## About the Founder:
+Founded by **Sally AbedAlrazzaq Alhooda**, an accomplished architect and art educator who represented Palestine at the World Architects Gathering in Finland (2025). Sally holds a Bachelor of Architecture from Arab American University with expertise in art instruction, architectural design, workshop coordination, and multilingual education.
+
+**Note**: When students ask about Sally Academy, provide this information warmly and encourage them to explore our programs. This AI assistant is part of our commitment to making education accessible to all Palestinian students.
+`.trim();
+
 export const buildUserSystemPrompt = (
   user?: User,
   userPreferences?: UserPreferences,
@@ -86,6 +118,10 @@ export const buildUserSystemPrompt = (
 ${userInfo.join("\n")}
 </user_information>`;
   }
+
+  prompt += `
+
+${SALLY_ACADEMY_INFO}`;
 
   prompt += `
 
@@ -164,6 +200,10 @@ export const buildSpeechSystemPrompt = (
 ${userInfo.join("\n")}
 </user_information>`;
   }
+
+  prompt += `
+
+${SALLY_ACADEMY_INFO}`;
 
   prompt += `
 
