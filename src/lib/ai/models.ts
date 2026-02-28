@@ -51,10 +51,10 @@ const staticModels = {
     "gpt-5.1-codex-mini": openai("gpt-5.1-codex-mini"),
   },
   google: {
-    "gemini-2.5-flash-lite": google("gemini-2.5-flash-lite"),
-    "gemini-2.5-flash": google("gemini-2.5-flash"),
-    "gemini-3-pro": google("gemini-3-pro-preview"),
-    "gemini-2.5-pro": google("gemini-2.5-pro"),
+    "flash-lite": google("gemini-2.5-flash-lite"),
+    "flash": google("gemini-2.5-flash"),
+    "3-pro": google("gemini-3-pro-preview"),
+    "2.5-pro": google("gemini-2.5-pro"),
   },
   anthropic: {
     "sonnet-4.5": anthropic("claude-sonnet-4-5"),
@@ -67,18 +67,18 @@ const staticModels = {
     "grok-3-mini": xai("grok-3-mini"),
   },
   ollama: {
-    "deepseek-v3.1:671b-cloud": ollama("deepseek-v3.1:671b-cloud"),
-    "qwen3-coder:480b-cloud": ollama("qwen3-coder:480b-cloud"),
-    "gpt-oss:120b-cloud": ollama("gpt-oss:120b-cloud"),
-    "gpt-oss:20b-cloud": ollama("gpt-oss:20b-cloud"),
-    "kimi-k2:1t-cloud": ollama("kimi-k2:1t-cloud"),
-    "glm-4.6:cloud": ollama("glm-4.6:cloud"),
-    "qwen3-vl:235b-cloud": ollama("qwen3-vl:235b-cloud"),
+    "deepseek-671b": ollama("deepseek-v3.1:671b-cloud"),
+    "qwen-coder": ollama("qwen3-coder:480b-cloud"),
+    "gpt-oss-120b": ollama("gpt-oss:120b-cloud"),
+    "gpt-oss-20b": ollama("gpt-oss:20b-cloud"),
+    "kimi-k2": ollama("kimi-k2:1t-cloud"),
+    "glm-4.6": ollama("glm-4.6:cloud"),
+    "qwen-vision": ollama("qwen3-vl:235b-cloud"),
   },
   groq: {
-    "llama-4-scout-17b": groq("meta-llama/llama-4-scout-17b-16e-instruct"),
-    "qwen3-32b": groq("qwen/qwen3-32b"),
-    "kimi-k2-instruct": groq("moonshotai/kimi-k2-instruct"),
+    "llama-4": groq("meta-llama/llama-4-scout-17b-16e-instruct"),
+    "qwen-32b": groq("qwen/qwen3-32b"),
+    "kimi-k2": groq("moonshotai/kimi-k2-instruct"),
     "gpt-oss-20b": groq("openai/gpt-oss-20b"),
     "gpt-oss-120b": groq("openai/gpt-oss-120b"),
   },
@@ -103,17 +103,17 @@ const hiddenModels = new Set<string>([
   "openai/gpt-5.1",
   "openai/gpt-5.1-codex",
   "openai/gpt-5.1-codex-mini",
-  "google/gemini-2.5-flash",
-  "google/gemini-3-pro",
-  "google/gemini-2.5-pro",
+  "google/flash",
+  "google/3-pro",
+  "google/2.5-pro",
   "anthropic/sonnet-4.5",
   "anthropic/haiku-4.5",
   "anthropic/opus-4.5",
   "xai/grok-4-1-fast",
   "xai/grok-4-1",
   "xai/grok-3-mini",
-  "groq/llama-4-scout-17b",
-  "groq/kimi-k2-instruct",
+  "groq/llama-4",
+  "groq/kimi-k2",
   "groq/gpt-oss-20b",
   "groq/gpt-oss-120b",
   "openRouter/deepseek-v3:free",
@@ -164,15 +164,15 @@ registerFileSupport(staticModels.openai["gpt-5-mini"], OPENAI_FILE_MIME_TYPES);
 registerFileSupport(staticModels.openai["gpt-5-nano"], OPENAI_FILE_MIME_TYPES);
 
 registerFileSupport(
-  staticModels.google["gemini-2.5-flash-lite"],
+  staticModels.google["flash-lite"],
   GEMINI_FILE_MIME_TYPES,
 );
 registerFileSupport(
-  staticModels.google["gemini-2.5-flash"],
+  staticModels.google["flash"],
   GEMINI_FILE_MIME_TYPES,
 );
 registerFileSupport(
-  staticModels.google["gemini-2.5-pro"],
+  staticModels.google["2.5-pro"],
   GEMINI_FILE_MIME_TYPES,
 );
 
@@ -222,7 +222,7 @@ export const getFilePartSupportedMimeTypes = (model: LanguageModel) => {
   return staticFilePartSupportByModel.get(model) ?? [];
 };
 
-const fallbackModel = staticModels.google["gemini-2.5-flash-lite"];
+const fallbackModel = staticModels.google["flash-lite"];
 
 export const customModelProvider = {
   modelsInfo: Object.entries(allModels).map(([provider, models]) => ({
