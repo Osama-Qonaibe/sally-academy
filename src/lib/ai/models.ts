@@ -21,9 +21,18 @@ import {
   XAI_FILE_MIME_TYPES,
 } from "./file-support";
 
-const ollama = createOllama({
-  baseURL: process.env.OLLAMA_BASE_URL || "http://localhost:11434/api",
-});
+const ollamaConfig: Parameters<typeof createOllama>[0] = {
+  baseURL: process.env.OLLAMA_BASE_URL || "https://ollama.com/api",
+};
+
+if (process.env.OLLAMA_API_KEY) {
+  ollamaConfig.headers = {
+    Authorization: `Bearer ${process.env.OLLAMA_API_KEY}`,
+  };
+}
+
+const ollama = createOllama(ollamaConfig);
+
 const groq = createGroq({
   baseURL: process.env.GROQ_BASE_URL || "https://api.groq.com/openai/v1",
   apiKey: process.env.GROQ_API_KEY,
@@ -31,6 +40,7 @@ const groq = createGroq({
 
 const staticModels = {
   openai: {
+    "gpt-image-1.5": openai("gpt-image-1.5"),
     "gpt-4.1": openai("gpt-4.1"),
     "gpt-4.1-mini": openai("gpt-4.1-mini"),
     "o4-mini": openai("o4-mini"),
@@ -57,9 +67,13 @@ const staticModels = {
     "grok-3-mini": xai("grok-3-mini"),
   },
   ollama: {
-    "gemma3:1b": ollama("gemma3:1b"),
-    "gemma3:4b": ollama("gemma3:4b"),
-    "gemma3:12b": ollama("gemma3:12b"),
+    "deepseek-v3.1:671b-cloud": ollama("deepseek-v3.1:671b-cloud"),
+    "qwen3-coder:480b-cloud": ollama("qwen3-coder:480b-cloud"),
+    "gpt-oss:120b-cloud": ollama("gpt-oss:120b-cloud"),
+    "gpt-oss:20b-cloud": ollama("gpt-oss:20b-cloud"),
+    "kimi-k2:1t-cloud": ollama("kimi-k2:1t-cloud"),
+    "glm-4.6:cloud": ollama("glm-4.6:cloud"),
+    "qwen3-vl:235b-cloud": ollama("qwen3-vl:235b-cloud"),
   },
   groq: {
     "llama-4-scout-17b": groq("meta-llama/llama-4-scout-17b-16e-instruct"),
@@ -97,9 +111,6 @@ const hiddenModels = new Set<string>([
   "xai/grok-4-1-fast",
   "xai/grok-4-1",
   "xai/grok-3-mini",
-  "ollama/gemma3:1b",
-  "ollama/gemma3:4b",
-  "ollama/gemma3:12b",
   "groq/llama-4-scout-17b",
   "groq/kimi-k2-instruct",
   "groq/gpt-oss-20b",
@@ -115,9 +126,6 @@ const hiddenModels = new Set<string>([
 
 const staticUnsupportedModels = new Set([
   staticModels.openai["o4-mini"],
-  staticModels.ollama["gemma3:1b"],
-  staticModels.ollama["gemma3:4b"],
-  staticModels.ollama["gemma3:12b"],
   staticModels.openRouter["gpt-oss-20b:free"],
   staticModels.openRouter["qwen3-8b:free"],
   staticModels.openRouter["qwen3-14b:free"],
@@ -255,6 +263,9 @@ function checkProviderAPIKey(provider: keyof typeof staticModels) {
       break;
     case "openRouter":
       key = process.env.OPENROUTER_API_KEY;
+      break;
+    case "ollama":
+      key = process.env.OLLAMA_API_KEY || "local";
       break;
     default:
       return true;
